@@ -8,7 +8,7 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 .then(response => response.json())
 .then(result => {
     for(let index=0;index<result.length/10;index++){
-        pages.push(index)
+        pages.push(index+1)
     }
     posts = result
     renderPosts(posts.slice(currentPage*10, (currentPage+1)*10));
@@ -20,7 +20,7 @@ function renderPosts(posts){
 }
 
 function renderPagination(){
-    pageDiv.innerHTML+=pages.map((value, index)=>`<span onClick='updatePage(${index})' style="height: 30px; width: 30px; background-color: aqua; justify-content: center; align-items: center; margin-right: 5px;" >${value}</span>`).join('')
+    pageDiv.innerHTML+=pages.map((value, index)=>`<span onClick='updatePage(${index})' style="height: 30px; width: 30px; background-color: aqua; margin-right: 5px; border-radius: 5px "><p style="margin-top:7px; margin-left:7px;" >${value}</p></span>`).join('')
 }
 
 function updatePage(index){
